@@ -5,6 +5,8 @@ val logback_version: String by project
 val exposed_version: String by project
 val h2_version: String by project
 
+val paho_mqtt_client_version: String by project
+
 plugins {
     kotlin("jvm") version "1.9.22"
     id("io.ktor.plugin") version "2.3.7"
@@ -22,12 +24,11 @@ application {
 }
 
 
-
 repositories {
     mavenCentral()
-    maven {
+   /* maven {
         url = uri("https://jitpack.io")
-    }
+    }*/
 }
 
 dependencies {
@@ -44,7 +45,8 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 
-    implementation("com.github.traxterz:ktor-plugin-mqtt:v1.1.0")
+    api("org.eclipse.paho:org.eclipse.paho.mqttv5.client:$paho_mqtt_client_version")
+    //implementation("com.github.traxterz:ktor-plugin-mqtt:v1.1.0")
 }
 
 ktor {

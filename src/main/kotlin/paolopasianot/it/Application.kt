@@ -6,12 +6,13 @@ import io.ktor.server.netty.*
 import paolopasianot.it.plugins.*
 
 fun main() {
-    embeddedServer(Netty, port = 8080, module = Application::module)
+    embeddedServer(Netty, module = Application::module)
         .start(wait = true)
 }
 
 fun Application.module() {
-    configureSerialization()
+    configureMqtt()
+    //configureSerialization()
     configureDatabases()
     configureRouting()
 }

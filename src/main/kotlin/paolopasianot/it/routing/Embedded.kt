@@ -7,12 +7,14 @@ import paolopasianot.it.mqtt.AtMostOnce
 import paolopasianot.it.mqtt.topic
 
 fun Routing.embedded(){
-    topic("microbot", AtMostOnce){
+    /*topic("microbot", AtMostOnce){
         val message = it.toString()
         println(message)
-    }
+    }*/
 
     post("/embedded") {
         println(call.receiveText())
     }
+
+
 }

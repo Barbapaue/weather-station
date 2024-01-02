@@ -7,6 +7,7 @@ import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import paolopasianot.it.routing.embedded
+import paolopasianot.it.routing.html
 
 fun Application.configureRouting() {
     install(StatusPages) {
@@ -15,9 +16,8 @@ fun Application.configureRouting() {
         }
     }
     routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
-        embedded()
+        staticResources("/static", "static")
+        html()
+        //embedded()
     }
 }

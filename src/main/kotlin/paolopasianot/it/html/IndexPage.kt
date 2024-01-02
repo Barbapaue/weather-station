@@ -3,7 +3,7 @@ package paolopasianot.it.html
 import io.ktor.server.html.*
 import kotlinx.html.*
 
-class Index(
+class IndexPage(
     private val list: List<WeatherStationUI>
 ) : Template<HTML> {
     val ulNavigationItems = Placeholder<FlowContent>()
@@ -13,6 +13,9 @@ class Index(
             link {
                 rel = "stylesheet"
                 href = "/static/index.css"
+            }
+            meta {
+
             }
         }
         body {

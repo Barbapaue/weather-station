@@ -12,8 +12,10 @@ fun main() {
 }
 
 fun Application.module() {
+    authentication()
     //configureMqtt()
     //configureSerialization()
     //configureDatabases()
     configureRouting()
+
 }

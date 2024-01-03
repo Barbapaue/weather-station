@@ -7,7 +7,7 @@ import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import paolopasianot.it.routing.api
-import paolopasianot.it.routing.html
+import paolopasianot.it.routing.embedded
 
 fun Application.configureRouting() {
     install(StatusPages) {
@@ -16,12 +16,15 @@ fun Application.configureRouting() {
         }
     }
     routing {
+        singlePageApplication {
+            react("dashboard")
+        }
         staticResources("/static", "static")
-        html()
+
         route("api"){
             api()
         }
 
-        //embedded()
+        embedded()
     }
 }

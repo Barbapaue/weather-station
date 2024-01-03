@@ -15,7 +15,7 @@ fun Route.clientApi() {
         post {
             val formParameters = call.receiveParameters()
             val name = formParameters["name"].toString()
-            val nome = formParameters["nome"]
+            val nome = formParameters["note"]
             ClientService.create(name, nome)
             call.respondRedirect("/", permanent = true)
         }

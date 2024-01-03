@@ -4,7 +4,7 @@ import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import paolopasianot.it.auth.ApplicationUsers
 
-fun Application.authentication(){
+fun Application.configureAuthentication(){
     install(Authentication) {
         basic(ApplicationUsers.ROOT.auth) {
            realm = "Access to the '/' path"

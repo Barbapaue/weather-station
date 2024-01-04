@@ -3,10 +3,12 @@ package paolopasianot.it
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import org.jetbrains.exposed.sql.transactions.TransactionManager
+import paolopasianot.it.DB.db
 import paolopasianot.it.plugins.*
 
 fun main() {
-    DB.init()
+    TransactionManager.defaultDatabase = db
     embeddedServer(Netty, module = Application::module)
         .start(wait = true)
 }

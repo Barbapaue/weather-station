@@ -22,6 +22,19 @@ object ClientService {
         }[ClientTable.id]
     }
 
+    suspend fun getAll(): List<Client> {
+        return dbQuery {
+            ClientTable.selectAll()
+                .map {
+                    Client(
+                        id = it[ClientTable.id],
+                        name = it[ClientTable.name],
+                        note = it[ClientTable.note]
+                    )
+                }
+        }
+    }
+
     suspend fun read(id: Int): Client? {
         return dbQuery {
             ClientTable.selectAll()
@@ -31,16 +44,26 @@ object ClientService {
                         id = it[ClientTable.id],
                         name = it[ClientTable.name],
                         note = it[ClientTable.note]
-                    ) }
+                    )
+                }
                 .singleOrNull()
         }
     }
 
-    suspend fun update(id: Int, user: Client) {
+    suspend fun update(client: Client) {
+        dbQuery {
+            ClientTable.update({ ClientTable.id eq client.id }) {
+                it[name] = client.name
+                it[note] = client.note
+            }
+        }
+    }
+
+    suspend fun update(id: Int, name: String, note: String? = null) {
         dbQuery {
             ClientTable.update({ ClientTable.id eq id }) {
-                it[name] = user.name
-                it[note] = user.note
+                it[this.name] = name
+                it[this.note] = note
             }
         }
     }

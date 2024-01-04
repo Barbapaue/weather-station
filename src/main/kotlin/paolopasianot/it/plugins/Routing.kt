@@ -6,8 +6,9 @@ import io.ktor.server.http.content.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import paolopasianot.it.routing.api
+import paolopasianot.it.routing.restApi
 import paolopasianot.it.routing.embedded
+import paolopasianot.it.routing.service.service
 
 fun Application.configureRouting() {
     install(StatusPages) {
@@ -21,8 +22,12 @@ fun Application.configureRouting() {
         }
         staticResources("/static", "static")
 
-        route("api"){
-            api()
+        route("api/v1"){
+            restApi()
+        }
+
+        route("service/v1"){
+            service()
         }
 
         embedded()

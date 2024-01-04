@@ -16,9 +16,4 @@ fun Application.configureSerialization() {
             allowStructuredMapKeys = true
         })
     }
-    routing {
-        get("/json/kotlinx-serialization") {
-            call.respond(mapOf("hello" to "world"))
-        }
-    }
 }

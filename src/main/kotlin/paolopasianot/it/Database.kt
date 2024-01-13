@@ -13,13 +13,17 @@ import paolopasianot.it.plugins.UserService
 
 object DB {
 
-    val db by lazy {
+   /* val db by lazy {
         Database.connect(
             url = "jdbc:pgsql://ep-small-shape-a2e217fk.eu-central-1.aws.neon.tech/weatherstation?sslmode=require",
             driver = "org.postgresql.ds.PGSimpleDataSource",
             user = "paolo.pasianot@icloud.com",
             password = "HE7cTwFCAJ2x"
         )
+    }*/
+
+    fun init(){
+        Database.connect(startHikari())
     }
 
     //Stand-by

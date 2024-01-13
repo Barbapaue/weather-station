@@ -6,6 +6,7 @@ import io.ktor.server.http.content.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import paolopasianot.it.routing.api.login
 import paolopasianot.it.routing.restApi
 import paolopasianot.it.routing.embedded
 import paolopasianot.it.routing.service.service
@@ -30,6 +31,7 @@ fun Application.configureRouting() {
             service()
         }
 
+        login()
         embedded()
     }
 }

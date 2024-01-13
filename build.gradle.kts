@@ -40,6 +40,7 @@ dependencies {
     implementation("io.ktor:ktor-server-html-builder")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("io.ktor:ktor-server-auth")
+    implementation("io.ktor:ktor-server-auth-jwt")
     implementation("io.ktor:ktor-server-webjars")
     implementation("org.webjars:bootstrap:5.2.3")
 

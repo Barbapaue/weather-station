@@ -4,22 +4,44 @@ import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import paolopasianot.it.model.Client
 import paolopasianot.it.utilities.dbQuery
+import kotlin.random.Random
 
 object ClientService {
 
     object ClientTable : Table() {
         val id = integer("id").autoIncrement()
         val name = varchar("name", length = 255)
+        val invitationCode = varchar("invitation_code", length = 255)
         val note = varchar("note", length = 255).nullable()
 
         override val primaryKey = PrimaryKey(id)
     }
 
-    suspend fun create(name: String, note: String? = null): Int = dbQuery {
+    fun generateInvitationCode(): String {
+        val rand = listOf(('0'..'9'), ('a'..'z'), ('A'..'Z')).flatten()
+        return (0 .. 19).map {
+            rand.random()
+        }.joinToString(separator = "")
+    }
+
+    suspend fun create(name: String, note: String? = null, invitationCode: String = generateInvitationCode()): Int = dbQuery {
         ClientTable.insert {
             it[this.name] = name
+            it[this.invitationCode] = invitationCode
             it[this.note] = note
         }[ClientTable.id]
+    }
+
+    /***
+     * Se la lista risultante è vuota vuol dire che non esistono chienti con quel codice invito
+     *
+     * @param invitationCode [String] codice di invito
+     */
+    suspend fun invitationalCodeExist(invitationCode: String): Boolean = dbQuery {
+        //miglioria prendere il "singleOrNull" perchè dovrebbe essere unico ma per ora lasciamo cosi
+        !ClientTable.selectAll().andWhere {
+            ClientTable.invitationCode eq invitationCode
+        }.empty()
     }
 
     suspend fun getAll(): List<Client> {
@@ -29,6 +51,7 @@ object ClientService {
                     Client(
                         id = it[ClientTable.id],
                         name = it[ClientTable.name],
+                        invitationCode = it[ClientTable.invitationCode],
                         note = it[ClientTable.note]
                     )
                 }
@@ -43,6 +66,7 @@ object ClientService {
                     Client(
                         id = it[ClientTable.id],
                         name = it[ClientTable.name],
+                        invitationCode = it[ClientTable.invitationCode],
                         note = it[ClientTable.note]
                     )
                 }

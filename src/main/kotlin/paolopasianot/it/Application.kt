@@ -6,6 +6,7 @@ import io.ktor.server.netty.*
 import org.jetbrains.exposed.sql.transactions.TransactionManager
 import paolopasianot.it.DB.db
 import paolopasianot.it.plugins.*
+import paolopasianot.it.storage.ClientService
 
 fun main() {
     TransactionManager.defaultDatabase = db

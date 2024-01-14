@@ -1,19 +1,14 @@
 package paolopasianot.it
 
 import io.ktor.server.application.*
-import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import org.jetbrains.exposed.sql.transactions.TransactionManager
 import paolopasianot.it.plugins.*
-import paolopasianot.it.storage.ClientService
 
-fun main() {
-    DB.init()
-    embeddedServer(Netty, module = Application::module)
-        .start(wait = true)
-}
+fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 fun Application.module() {
+    DB.init()
+
     configureAuthentication()
     configureSerialization()
     configureWebjars()

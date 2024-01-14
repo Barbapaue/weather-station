@@ -19,8 +19,13 @@ fun Application.configureRouting() {
     }
     routing {
         singlePageApplication {
-            react("dashboard")
+            //react("dashboard")
+            useResources = true
+            filesPath = "dashboard"
+            defaultPage = "index.html"
+            ignoreFiles { it.endsWith(".txt") }
         }
+
         staticResources("/static", "static")
 
         route("api/v1"){

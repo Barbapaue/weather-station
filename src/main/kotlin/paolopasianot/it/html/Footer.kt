@@ -8,4 +8,7 @@ fun BODY.weatherFooter(){
         integrity = "sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         attributes["crossorigin"] = "anonymous"
     }
+    script(src = "static/js/index.js"){
+
+    }
 }

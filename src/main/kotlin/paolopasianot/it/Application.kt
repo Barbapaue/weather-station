@@ -13,7 +13,7 @@ fun Application.module() {
     configureSerialization()
     configureWebjars()
 
-    configureMqtt()
+    //configureMqtt()
     configureRouting()
 
 }

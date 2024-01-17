@@ -7,7 +7,7 @@ import paolopasianot.it.mqtt.Topic
 import paolopasianot.it.mqtt.TopicSubscription
 
 fun Application.configureMqtt(){
-    val microbit = Topic("testTopic")
+    val microbit = Topic("topicName/led")
     val microbitTopicSubscription = TopicSubscription(microbit, AtMostOnce)
 
     // Installs the plugin to the server so that you can use it, won't work otherwise

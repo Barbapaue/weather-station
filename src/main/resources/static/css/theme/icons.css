@@ -1,0 +1,34 @@
+.material-symbols-outlined.md-18 {
+    font-size: 18px;
+    text-align: center;
+}
+.material-symbols-outlined.md-24 {
+    font-size: 24px;
+    text-align: center;
+}
+.material-symbols-outlined.md-36 {
+    font-size: 36px;
+    text-align: center;
+}
+.material-symbols-outlined.md-48 {
+    font-size: 48px;
+    text-align: center;
+}
+
+.material-symbols-outlined.md-color-primary { color: var(--md-sys-color-primary) }
+.material-symbols-outlined.md-color-on-primary { color: var(--md-sys-color-on-primary) }
+.material-symbols-outlined.md-color-primary-container { color: var(--md-sys-color-primary-container) }
+.material-symbols-outlined.md-color-on-primary-container { color: var(--md-sys-color-on-primary-container) }
+
+.material-symbols-outlined.md-color-secondary { color: var(--md-sys-color-secondary) }
+.material-symbols-outlined.md-color-on-secondary { color: var(--md-sys-color-on-secondary) }
+.material-symbols-outlined.md-color-secondary-container { color: var(--md-sys-color-secondary-container) }
+.material-symbols-outlined.md-color-on-secondary-container { color: var(--md-sys-color-on-secondary-container) }
+
+.material-symbols-outlined.md-color-tertiary { color: var(--md-sys-color-tertiary) }
+.material-symbols-outlined.md-color-on-tertiary { color: var(--md-sys-color-on-tertiary) }
+.material-symbols-outlined.md-color-tertiary-container { color: var(--md-sys-color-tertiary-container) }
+.material-symbols-outlined.md-color-on-tertiary-container { color: var(--md-sys-color-on-tertiary-container) }
+
+.material-symbols-outlined.md-color-on-background { color: var(--md-sys-color-on-background) }
+.material-symbols-outlined.md-color-on-surface { color: var(--md-sys-color-on-surface) }

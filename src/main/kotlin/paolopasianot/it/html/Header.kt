@@ -1,20 +1,33 @@
 package paolopasianot.it.html
 
 import kotlinx.html.*
+import paolopasianot.it.html.model.Theme
+import paolopasianot.it.html.model.Theme.*
+import paolopasianot.it.html.model.WebsiteCoreData
+import paolopasianot.it.html.model.favicon
 
-fun HTML.weatherHeader() {
+/**
+ * generate default header
+ *
+ * @param myStyle use to put other custom style after reset and index style
+ */
+fun HTML.weatherHeader(
+    data: WebsiteCoreData,
+    myStyle: HEAD.() -> Unit
+) {
+    title = data.title
+    lang = data.lang.toHTML
+
     head {
-        title = "Weather Station"
-        //HEAD
-        link(rel = "icon", href = "static/favicon.webp", type = "image/x-icon")
-        link(rel = "shortcut icon", href = "static/favicon.webp", type = "image/x-icon")
+
+        favicon(data.icon)
 
         //META
         meta(
             name = "viewport",
             content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=device-dpi"
         )
-        meta(content = "IT") {
+        meta(content = data.lang.toHTML) {
             attributes["http-equiv"] = "Content-Language"
         }
         meta(content = "text/html; charset=UTF-8") {
@@ -26,18 +39,24 @@ fun HTML.weatherHeader() {
             href = "https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i",
             rel = "stylesheet"
         )
+
+        //ICONS
         link(
-            href = "static/vendor/fontawesome-free/css/all.min.css",
+            href = "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined",
             rel = "stylesheet"
         )
 
-        //BOOTSTRAP
-        link(href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css", rel = "stylesheet"){
-            integrity = "sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            attributes["crossorigin"] = "anonymous"
+        //STYLE
+        link(href = "static/css/reset.css", rel = "stylesheet") //reset default web browser style
+        link(href = "static/css/theme/color.css", rel = "stylesheet")
+        when(data.theme){
+            LIGHT -> link(href = "static/css/theme/theme-light.css", rel = "stylesheet")
+            DARK -> link(href = "static/css/theme/theme-dark.css", rel = "stylesheet")
         }
+        link(href = "static/css/theme/icons.css", rel = "stylesheet")
+        link(href = "static/css/theme/button.css", rel = "stylesheet")
+        link(href = "static/css/index.css", rel = "stylesheet")
+        myStyle()
 
-        //WEATHER STATION STYLE
-        link(href = "static/css/weather_station.css", rel = "stylesheet")
     }
 }

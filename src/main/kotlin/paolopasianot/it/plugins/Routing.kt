@@ -8,7 +8,11 @@ import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import paolopasianot.it.html.index
-import paolopasianot.it.html.model.Pages
+import paolopasianot.it.html.model.IndexPages
+import paolopasianot.it.html.model.SupportedLangs
+import paolopasianot.it.html.model.Theme
+import paolopasianot.it.html.model.WebsiteCoreData
+import paolopasianot.it.html.webPage
 import paolopasianot.it.routing.api.login
 import paolopasianot.it.routing.restApi
 import paolopasianot.it.routing.embedded
@@ -22,11 +26,7 @@ fun Application.configureRouting() {
     }
     routing {
 
-        get("/") {
-            call.respondHtml {
-                index(Pages.HOME)
-            }
-        }
+        webPage()
 
         staticResources("/static", "static")
 

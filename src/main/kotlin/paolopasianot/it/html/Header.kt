@@ -35,8 +35,12 @@ fun HTML.weatherHeader(
         }
 
         //FONT
+        link(rel = "preconnect", href = "https://fonts.googleapis.com")
+        link(rel = "preconnect", href = "https://fonts.gstatic.com"){
+            attributes["crossorigin"] = ""
+        }
         link(
-            href = "https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i",
+            href = "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
             rel = "stylesheet"
         )
 
@@ -55,6 +59,7 @@ fun HTML.weatherHeader(
         }
         link(href = "static/css/theme/icons.css", rel = "stylesheet")
         link(href = "static/css/theme/button.css", rel = "stylesheet")
+        link(href = "static/css/theme/navigation-rail.css", rel = "stylesheet")
         link(href = "static/css/index.css", rel = "stylesheet")
         myStyle()
 

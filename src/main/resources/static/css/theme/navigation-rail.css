@@ -1,0 +1,62 @@
+/* NAVIGATION RAIL */
+aside.navigation-rail {
+    width: 98px;
+    height: 100%;
+    background-color: var(--md-sys-color-background);
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigation-rail-menu-icon {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+}
+
+nav.navigation-rail-icons {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+nav.navigation-rail-icons ul{
+    list-style: none;
+}
+
+nav.navigation-rail-icons ul li a {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+}
+
+nav.navigation-rail-icons ul li a span:hover {
+    background-color: var(--md-sys-color-secondary-container);
+    border-radius: 32px 32px 32px 32px;
+    opacity: 0.6;
+}
+
+nav.navigation-rail-icons ul li a span {
+    width: 100%;
+    height: 32px;
+    padding: 4px;
+}
+
+nav.navigation-rail-icons ul li a p {
+    padding: 4px;
+}
+
+.icon-selected {
+    width: 100%;
+    border-radius: 32px 32px 32px 32px;
+    background-color: var(--md-sys-color-secondary-container);
+
+    color: var(--md-sys-color-on-secondary-container);
+}

@@ -7,14 +7,11 @@ import paolopasianot.it.mqtt.AtMostOnce
 import paolopasianot.it.mqtt.topic
 
 fun Routing.embedded(){
-    topic("testTopic", AtMostOnce){
-        val message = it.toString()
-        println(message)
+    topic("client/001/station/001/debug/counter", AtMostOnce){
+        println(String(it.payload))
     }
 
-    post("/embedded") {
-        println(call.receiveText())
-    }
+
 
 
 }

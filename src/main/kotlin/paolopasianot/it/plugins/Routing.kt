@@ -39,6 +39,6 @@ fun Application.configureRouting() {
         }
 
         login()
-        //embedded()
+        embedded()
     }
 }

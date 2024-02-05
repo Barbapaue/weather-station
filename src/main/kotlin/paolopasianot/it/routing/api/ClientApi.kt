@@ -9,6 +9,7 @@ import io.ktor.server.routing.*
 import org.jetbrains.exposed.sql.not
 import paolopasianot.it.auth.ApplicationUsers
 import paolopasianot.it.model.Client
+import paolopasianot.it.model.response.ClientInvitationalCode
 import paolopasianot.it.storage.ClientService
 
 fun Route.clientApi() {
@@ -45,7 +46,8 @@ fun Route.clientApi() {
                 try {
                     val formParameters = call.receiveParameters()
                     val invitationCode = formParameters["invitation_code"].toString()
-                    if (ClientService.invitationalCodeExist(invitationCode)) call.respond(HttpStatusCode.OK)
+                    val client = ClientService.invitationalCodeExist(invitationCode).firstOrNull()
+                    if (client != null) call.respond<ClientInvitationalCode>(HttpStatusCode.OK, client)
                     else call.respond(HttpStatusCode.BadRequest)
                 } catch (e: Exception) {
                     e.printStackTrace()

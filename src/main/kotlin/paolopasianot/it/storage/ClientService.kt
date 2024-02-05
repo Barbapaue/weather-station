@@ -3,6 +3,7 @@ package paolopasianot.it.storage
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import paolopasianot.it.model.Client
+import paolopasianot.it.model.response.ClientInvitationalCode
 import paolopasianot.it.utilities.dbQuery
 import kotlin.random.Random
 
@@ -37,11 +38,16 @@ object ClientService {
      *
      * @param invitationCode [String] codice di invito
      */
-    suspend fun invitationalCodeExist(invitationCode: String): Boolean = dbQuery {
+    suspend fun invitationalCodeExist(invitationCode: String): List<ClientInvitationalCode> = dbQuery {
         //miglioria prendere il "singleOrNull" perchè dovrebbe essere unico ma per ora lasciamo cosi
-        !ClientTable.selectAll().andWhere {
+        ClientTable.selectAll().andWhere {
             ClientTable.invitationCode eq invitationCode
-        }.empty()
+        }.map {
+            ClientInvitationalCode(
+                id = it[ClientTable.id],
+                name = it[ClientTable.name]
+            )
+        }
     }
 
     suspend fun getAll(): List<Client> {

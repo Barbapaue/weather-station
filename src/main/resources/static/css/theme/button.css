@@ -1,3 +1,7 @@
+:root {
+    --md-sys-color-primary: var(--md-sys-color-primary-light);
+}
+
 button.primary {
     position: relative;
     overflow: hidden;

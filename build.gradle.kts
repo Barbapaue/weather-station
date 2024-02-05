@@ -43,6 +43,7 @@ dependencies {
     implementation("io.ktor:ktor-server-auth-jwt")
     implementation("io.ktor:ktor-server-webjars")
     implementation("org.webjars:bootstrap:5.2.3")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.690")
 
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")

@@ -7,7 +7,7 @@ import paolopasianot.it.auth.ApplicationUsers
 fun Application.configureAuthentication(){
     install(Authentication) {
         basic(ApplicationUsers.ROOT.auth) {
-           realm = "Access to the '/' path"
+           realm = "Private section"
             validate { credentials ->
                 if (credentials.name == "MyWeatherWhatTheFuck" && credentials.password == "catxuk-wAcgan-tujgo3") {
                     UserIdPrincipal(credentials.name)
